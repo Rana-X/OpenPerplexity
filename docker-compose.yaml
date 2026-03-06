@@ -1,0 +1,14 @@
+services:
+  openperplexity:
+    image: openperplexity:latest
+    build:
+      context: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - openperplexity_data:/home/openperplexity/data
+    restart: unless-stopped
+
+volumes:
+  openperplexity_data:
+    name: 'openperplexity-data'

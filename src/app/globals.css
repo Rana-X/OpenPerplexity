@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'PP Editorial';
+  src: url('/fonts/pp-ed-ul.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --brand-sand: #f3f7fb;
+    --brand-ink: #0f172a;
+    --brand-accent: #2563eb;
+    --brand-aqua: #14b8a6;
+    --shell-fade-rgb: 243 247 251;
+    --shell-header-from-rgb: 248 251 255;
+    --shell-header-to-rgb: 243 247 251;
+  }
+
+  .overflow-hidden-scrollable {
+    -ms-overflow-style: none;
+  }
+
+  .overflow-hidden-scrollable::-webkit-scrollbar {
+    display: none;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #e8edf1 transparent; /* light-200 */
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: #e8edf1; /* light-200 */
+    border-radius: 3px;
+    transition: background 0.2s ease;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: #d0d7de; /* light-300 */
+  }
+
+  @media (prefers-color-scheme: dark) {
+    * {
+      scrollbar-color: #21262d transparent; /* dark-200 */
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background: #21262d; /* dark-200 */
+    }
+
+    *::-webkit-scrollbar-thumb:hover {
+      background: #30363d; /* dark-300 */
+    }
+  }
+
+  :root.dark *,
+  html.dark *,
+  body.dark * {
+    scrollbar-color: #21262d transparent; /* dark-200 */
+  }
+
+  :root.dark *::-webkit-scrollbar-thumb,
+  html.dark *::-webkit-scrollbar-thumb,
+  body.dark *::-webkit-scrollbar-thumb {
+    background: #21262d; /* dark-200 */
+  }
+
+  :root.dark *::-webkit-scrollbar-thumb:hover,
+  html.dark *::-webkit-scrollbar-thumb:hover,
+  body.dark *::-webkit-scrollbar-thumb:hover {
+    background: #30363d; /* dark-300 */
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--brand-sand);
+  }
+
+  body {
+    color: var(--brand-ink);
+    background:
+      radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 34%),
+      radial-gradient(circle at top right, rgba(20, 184, 166, 0.1), transparent 40%),
+      #f3f7fb;
+  }
+
+  html.dark {
+    background: #0c1117;
+    --shell-fade-rgb: 15 23 42;
+    --shell-header-from-rgb: 11 17 32;
+    --shell-header-to-rgb: 15 23 42;
+  }
+
+  html.dark body {
+    color: #f8fafc;
+    background:
+      radial-gradient(circle at top left, rgba(59, 130, 246, 0.12), transparent 32%),
+      radial-gradient(circle at top right, rgba(45, 212, 191, 0.1), transparent 38%),
+      #0f172a;
+  }
+
+  ::selection {
+    background: rgba(37, 99, 235, 0.2);
+    color: inherit;
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .brand-shell {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .shell-fade-overlay {
+    background:
+      linear-gradient(
+        to top,
+        rgb(var(--shell-fade-rgb)) 0%,
+        rgb(var(--shell-fade-rgb)) 35%,
+        rgb(var(--shell-fade-rgb) / 0.95) 45%,
+        rgb(var(--shell-fade-rgb) / 0.85) 55%,
+        rgb(var(--shell-fade-rgb) / 0.7) 65%,
+        rgb(var(--shell-fade-rgb) / 0.5) 75%,
+        rgb(var(--shell-fade-rgb) / 0.3) 85%,
+        rgb(var(--shell-fade-rgb) / 0.1) 92%,
+        transparent 100%
+      );
+  }
+
+  .shell-header-surface {
+    background:
+      linear-gradient(
+        180deg,
+        rgb(var(--shell-header-from-rgb) / 0.96) 0%,
+        rgb(var(--shell-header-to-rgb) / 0.84) 68%,
+        rgb(var(--shell-header-to-rgb) / 0.38) 100%
+      );
+  }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select,
+  textarea,
+  input {
+    font-size: 16px !important;
+  }
+}
