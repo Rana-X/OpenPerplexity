@@ -41,7 +41,6 @@ Thumbs.db
 
 # Db
 db.sqlite
-/searxng
 data/
 
 certificates
