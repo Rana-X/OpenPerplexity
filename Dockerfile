@@ -67,8 +67,9 @@ RUN sed -i 's/\r$//' ./entrypoint.sh || true
 
 RUN echo "searxng ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
-EXPOSE 3000 8080
+EXPOSE 3000
 
-ENV SEARXNG_API_URL=http://localhost:8080
+ENV SEARXNG_PORT=8888
+ENV SEARXNG_API_URL=http://127.0.0.1:8888
 
 CMD ["/home/openperplexity/entrypoint.sh"]
